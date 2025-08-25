@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - UI Testing App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📊 Dashboard</h1>
+            <div class="user-info">
+                <span id="welcome-message">Tere tulemast!</span>
+                <button id="logout-btn" class="btn btn-secondary" data-testid="logout-button">
+                    🚪 Logi välja
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="dashboard-card">
+                <div class="success-login" data-testid="success-message">
+                    <h2>✅ Sisselogimine õnnestus!</h2>
+                    <p id="user-details">Sa oled edukalt sisse logitud.</p>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>🧪 Testide arv</h3>
+                            <div class="stat-number">6</div>
+                            <p>UI testid loodud</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <h3>⚙️ Raamistikud</h3>
+                            <div class="stat-number">2</div>
+                            <p>Cypress & Playwright</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <h3>✨ Stsenaariumid</h3>
+                            <div class="stat-number">3</div>
+                            <p>Positive, Negative, Edge</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <h3>🎯 Staatus</h3>
+                            <div class="stat-number">✅</div>
+                            <p>Kõik testid töötavad</p>
+                        </div>
+                    </div>
+
+                    <div class="actions-section">
+                        <h3>Võimalikud tegevused:</h3>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" data-testid="view-profile">
+                                👤 Vaata profiili
+                            </button>
+                            <button class="btn btn-secondary" data-testid="settings">
+                                ⚙️ Seaded
+                            </button>
+                            <button class="btn btn-info" data-testid="help">
+                                ❓ Abi
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="testing-info">
+                        <h3>Testimise informatsioon:</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Projekt:</strong> UI Testing Comparison
+                            </div>
+                            <div class="info-item">
+                                <strong>Kurs:</strong> TAK24
+                            </div>
+                            <div class="info-item">
+                                <strong>Raamistikud:</strong> Cypress vs Playwright
+                            </div>
+                            <div class="info-item">
+                                <strong>Funktsioon:</strong> Sisselogimise testimine
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 TAK24 - UI Testing Project</p>
+        </footer>
+    </div>
+
+    <script>
+        // Kontrolli kas kasutaja on sisse logitud
+        document.addEventListener('DOMContentLoaded', function() {
+            const userData = sessionStorage.getItem('userData');
+            if (userData) {
+                const user = JSON.parse(userData);
+                document.getElementById('welcome-message').textContent = `Tere, ${user.name}!`;
+                document.getElementById('user-details').textContent = 
+                    `Sa oled sisse logitud kasutajana: ${user.username}`;
+            }
+
+            // Väljalogimise funktsioon
+            document.getElementById('logout-btn').addEventListener('click', function() {
+                sessionStorage.removeItem('userData');
+                window.location.href = '/';
+            });
+
+            // Mock funktsioonid nuppudele
+            document.getElementById('view-profile')?.addEventListener('click', function() {
+                alert('Profiili vaatamine - demo funktsioon');
+            });
+
+            document.getElementById('settings')?.addEventListener('click', function() {
+                alert('Seaded - demo funktsioon');
+            });
+
+            document.getElementById('help')?.addEventListener('click', function() {
+                alert('Abi - demo funktsioon');
+            });
+        });
+    </script>
+</body>
+</html>

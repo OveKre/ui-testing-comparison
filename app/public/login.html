@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sisselogimine - UI Testing App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🔐 Sisselogimine</h1>
+            <p><a href="/" class="back-link">← Tagasi avalehele</a></p>
+        </header>
+
+        <main class="main-content">
+            <div class="login-card">
+                <h2>Logi oma kontole</h2>
+                
+                <!-- Vigade kuvamise ala -->
+                <div id="error-message" class="error-message" style="display: none;">
+                    <span id="error-text"></span>
+                </div>
+
+                <!-- Õnnestumise sõnumi ala -->
+                <div id="success-message" class="success-message" style="display: none;">
+                    <span id="success-text"></span>
+                </div>
+
+                <!-- Sisselogimise vorm -->
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Kasutajanimi:</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            placeholder="Sisesta kasutajanimi"
+                            autocomplete="username"
+                            data-testid="username-input"
+                            required
+                        >
+                        <div class="field-error" id="username-error"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Parool:</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="Sisesta parool"
+                            autocomplete="current-password"
+                            data-testid="password-input"
+                            required
+                        >
+                        <div class="field-error" id="password-error"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button 
+                            type="submit" 
+                            id="login-submit" 
+                            class="btn btn-primary"
+                            data-testid="login-button"
+                        >
+                            <span id="login-text">Logi sisse</span>
+                            <span id="loading-text" style="display: none;">Logib sisse...</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Test kasutajate info -->
+                <div class="help-text">
+                    <h4>Test kasutajad:</h4>
+                    <div class="test-credentials">
+                        <div class="credential-item">
+                            <strong>testuser</strong> / password123
+                        </div>
+                        <div class="credential-item">
+                            <strong>admin</strong> / admin123  
+                        </div>
+                        <div class="credential-item">
+                            <strong>john</strong> / john123
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 TAK24 - UI Testing Project</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

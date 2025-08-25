@@ -2,7 +2,6 @@
 
 [![Tests](https://github.com/tak24/ui-testing-comparison/actions/workflows/tests.yml/badge.svg)](https://github.com/tak24/ui-testing-comparison/actions/workflows/tests.yml)
 
-Ülesanne **TAK24** kursuse jaoks: UI testimise raamistike võrdlus (ÕV3, ÕV4).
 
 ## 📋 Projekti kirjeldus
 
@@ -16,15 +15,14 @@ Mõlemas raamistikus on loodud samaväärsed testid **sisselogimise funktsionaal
 
 ```
 ui-testing-comparison/
-├── app/                           # Testimiseks loodud veebirakendus
-│   ├── public/                    # Frontend failid (HTML, CSS, JS)
-│   │   ├── index.html            # Avalehekülg
-│   │   ├── login.html            # Sisselogimise vorm
-│   │   ├── dashboard.html        # Dashboard (pärast sisselogimist)
-│   │   ├── style.css             # Stiilid
-│   │   └── script.js             # Frontend JavaScript
-│   ├── server.js                 # Express.js server
-│   └── package.json              # Rakenduse sõltuvused
+├── public/                        # Frontend failid (HTML, CSS, JS)
+│   ├── index.html                # Avalehekülg
+│   ├── login.html                # Sisselogimise vorm
+│   ├── dashboard.html            # Dashboard (pärast sisselogimist)
+│   ├── style.css                 # Stiilid
+│   └── script.js                 # Frontend JavaScript
+├── server.js                     # Express.js server
+├── package.json                  # Rakenduse sõltuvused
 │
 ├── tests/                         # Testide kaust
 │   ├── cypress/                   # Cypress testid
@@ -59,8 +57,7 @@ cd ui-testing-comparison
 ### 2. Rakenduse käivitamine
 
 ```bash
-# Liigu rakenduse kausta ja installi sõltuvused
-cd app
+# Installi sõltuvused
 npm install
 
 # Käivita rakendus

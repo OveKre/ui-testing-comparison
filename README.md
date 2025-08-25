@@ -1,293 +1,294 @@
 # UI Testing Comparison: Cypress vs Playwright
 
-[![Tests](https://github.com/tak24/ui-testing-comparison/actions/workflows/tests.yml/badge.svg)](https://github.com/tak24/ui-testing-comparison/actions/workflows/tests.yml)
+[![Tests](https://github.com/OveKre/ui-testing-comparison/actions/workflows/tests.yml/badge.svg)](https://github.com/OveKre/ui-testing-comparison/actions/workflows/tests.yml)
 
+Assignment for **TAK24** course: UI testing frameworks comparison (ÕV3, ÕV4).
 
-## 📋 Projekti kirjeldus
+## 📋 Project Description
 
-See projekt võrdleb kahte populaarset UI testimise raamistikku:
-- **Cypress** - JavaScript-i põhine E2E testimise raamistik
-- **Playwright** - Microsoft'i loodud moodne cross-browser testimise raamistik
+This project compares two popular UI testing frameworks:
+- **Cypress** - JavaScript-based E2E testing framework
+- **Playwright** - Microsoft's modern cross-browser testing framework
 
-Mõlemas raamistikus on loodud samaväärsed testid **sisselogimise funktsionaalsuse** testimiseks.
+Both frameworks implement equivalent tests for **login functionality** testing.
 
-## 🏗️ Projekti struktuur
+## 🏗️ Project Structure
 
 ```
 ui-testing-comparison/
-├── public/                        # Frontend failid (HTML, CSS, JS)
-│   ├── index.html                # Avalehekülg
-│   ├── login.html                # Sisselogimise vorm
-│   ├── dashboard.html            # Dashboard (pärast sisselogimist)
-│   ├── style.css                 # Stiilid
+├── public/                        # Frontend files (HTML, CSS, JS)
+│   ├── index.html                # Home page
+│   ├── login.html                # Login form
+│   ├── dashboard.html            # Dashboard (after login)
+│   ├── style.css                 # Styles
 │   └── script.js                 # Frontend JavaScript
 ├── server.js                     # Express.js server
-├── package.json                  # Rakenduse sõltuvused
+├── package.json                  # Application dependencies
 │
-├── tests/                         # Testide kaust
-│   ├── cypress/                   # Cypress testid
-│   │   ├── e2e/login.cy.js       # Sisselogimise testid
-│   │   ├── support/              # Tugifailid ja custom commands
-│   │   └── cypress.config.js     # Cypress konfiguratsioon
+├── tests/                         # Tests directory
+│   ├── cypress/                   # Cypress tests
+│   │   ├── e2e/login.cy.js       # Login tests
+│   │   ├── support/              # Support files and custom commands
+│   │   └── cypress.config.js     # Cypress configuration
 │   │
-│   ├── playwright/               # Playwright testid
-│   │   ├── tests/login.spec.js   # Sisselogimise testid
-│   │   ├── global-setup.js       # Globaalne seadistus
-│   │   ├── global-teardown.js    # Globaalne lõpetus
-│   │   └── playwright.config.js  # Playwright konfiguratsioon
+│   ├── playwright/               # Playwright tests
+│   │   ├── tests/login.spec.js   # Login tests
+│   │   ├── global-setup.js       # Global setup
+│   │   ├── global-teardown.js    # Global teardown
+│   │   └── playwright.config.js  # Playwright configuration
 │   │
-│   └── package.json              # Testide sõltuvused
+│   └── package.json              # Test dependencies
 │
 ├── docs/
-│   └── test-report.md            # Detailne raamistike võrdlus
+│   └── test-report.md            # Detailed framework comparison
 │
-├── README.md                     # See fail
-└── .gitignore                    # Git ignore reeglid
+├── README.md                     # This file
+└── .gitignore                    # Git ignore rules
 ```
 
-## 🚀 Kiire alustamine
+## 🚀 Quick Start
 
-### 1. Repositooriumi kloneerimine
+### 1. Clone Repository
 
 ```bash
-git clone https://github.com/tak24/ui-testing-comparison.git
+git clone https://github.com/OveKre/ui-testing-comparison.git
 cd ui-testing-comparison
 ```
 
-### 2. Rakenduse käivitamine
+### 2. Start Application
 
 ```bash
-# Installi sõltuvused
+# Install dependencies
 npm install
 
-# Käivita rakendus
+# Start application
 npm start
 ```
 
-Rakendus käib aadressil: http://localhost:3000
+Application runs at: http://localhost:3000
 
-### 3. Testide ettevalmistamine
+### 3. Prepare Tests
 
-Ava uus terminal aken ja:
+Open a new terminal window and:
 
 ```bash
-# Liigu testide kausta
+# Navigate to tests directory
 cd tests
 npm install
 
-# Installi Playwright brauserid (kui kasutad Playwright)
+# Install Playwright browsers (if using Playwright)
 npx playwright install
 ```
 
-## 🧪 Testide käivitamine
+## 🧪 Running Tests
 
-### Cypress testid
+### Cypress Tests
 
 ```bash
-# Visuaalne käivitamine (GUI)
+# Visual execution (GUI)
 npm run cypress:open
 
-# Käsurea käivitamine
+# Command line execution
 npm run cypress:run
 
-# Headless režiim
+# Headless mode
 npm run cypress:run:headless
 ```
 
-### Playwright testid
+### Playwright Tests
 
 ```bash
-# Kõik testid
+# All tests
 npm run playwright:test
 
-# Testid koos UI-ga
+# Tests with UI
 npm run playwright:test:headed
 
-# Debug režiim
+# Debug mode
 npm run playwright:test:debug
 
-# Aruande vaatamine
+# View report
 npm run playwright:report
 ```
 
-### Kõik testid korraga
+### All Tests Together
 
 ```bash
-# Käivita nii Cypress kui Playwright testid
+# Run both Cypress and Playwright tests
 npm run test:all
 ```
 
-## 📊 Testitavad stsenaariumid
+## 📊 Test Scenarios
 
-Mõlemas raamistikus on implementeeritud järgmised testid:
+Both frameworks implement the following tests:
 
-### ✅ Positiivsed testid (3)
-- Õnnestunud sisselogimine kehtivate andmetega
-- Admin kasutaja sisselogimine
-- Dashboard funktsioonide testimine
+### ✅ Positive Tests (3)
+- Successful login with valid credentials
+- Admin user login
+- Dashboard functionality testing
 
-### ❌ Negatiivsed testid (3)
-- Sisselogimine valedate andmetega
-- Vale parooli testimine
-- Mitteeksisteeriva kasutaja testimine
+### ❌ Negative Tests (3)
+- Login with invalid credentials
+- Invalid password testing
+- Non-existent user login
 
-### 🔄 Edge case testid (6)
-- Tühjade väljade valideerimine
-- Osaliste andmete testimine
-- Tühikutega andmete käsitlemine
-- Stress test (pikad andmed)
-- XSS ja injection kaitsmise test
-- Klaviatuuriga navigeerimine (ainult Playwright)
+### 🔄 Edge Case Tests (6)
+- Empty fields validation
+- Partial data testing
+- Whitespace data handling
+- Stress test (long data)
+- XSS and injection protection test
+- Keyboard navigation (Playwright only)
 
-### 🎨 UI käitumise testid (6)
-- Vormi elementide olemasolu
-- Navigeerimine lehtede vahel
-- Responsive käitumine
-- CSS animatsioonide kontroll
-- API päringute testimine
-- Võrgu vigade käsitlemine
+### 🎨 UI Behavior Tests (6)
+- Form elements presence
+- Navigation between pages
+- Responsive behavior
+- CSS animations control
+- API request testing
+- Network error handling
 
-## 👤 Test kasutajad
+## 👤 Test Users
 
-Rakenduses on järgmised test kasutajad:
+The application has the following test users:
 
-| Kasutajanimi | Parool | Roll |
-|--------------|---------|------|
-| `testuser` | `password123` | Tavakasutaja |
-| `admin` | `admin123` | Administraator |
-| `john` | `john123` | Tavakasutaja |
+| Username | Password | Role |
+|----------|----------|------|
+| `testuser` | `password123` | Regular User |
+| `admin` | `admin123` | Administrator |
+| `john` | `john123` | Regular User |
 
-## 📈 Testide tulemused
+## 📈 Test Results
 
-| Raamistik | Testide arv | Õnnestunud | Ebaõnnestunud | Käivitamise aeg |
-|-----------|-------------|------------|---------------|-----------------|
-| Cypress | 18 | ✅ 18 | ❌ 0 | ~57 sekundit |
-| Playwright | 18 | ✅ 18 | ❌ 0 | ~40 sekundit |
+| Framework | Tests Count | Passed | Failed | Execution Time |
+|-----------|-------------|--------|--------|----------------|
+| Cypress | 18 | ✅ 18 | ❌ 0 | ~57 seconds |
+| Playwright | 18 | ✅ 18 | ❌ 0 | ~40 seconds |
 
-**Playwright on ~30% kiirem** tänu paremale paralleelsuse toele ja optimeeritud brauseri haldusele.
+**Playwright is ~30% faster** thanks to better parallelism support and optimized browser management.
 
-## 🔧 Konfiguratsioon
+## 🔧 Configuration
 
-### Cypress konfiguratsioon
-- **Baas URL:** http://localhost:3000
+### Cypress Configuration
+- **Base URL:** http://localhost:3000
 - **Viewport:** 1280x720
-- **Timeout:** 10 sekundid
-- **Retry:** 2 korda (run mode)
-- **Video:** Sisse lülitatud
-- **Screenshots:** Vea korral
+- **Timeout:** 10 seconds
+- **Retry:** 2 times (run mode)
+- **Video:** Enabled
+- **Screenshots:** On failure
 
-### Playwright konfiguratsioon
-- **Baas URL:** http://localhost:3000
-- **Brauserid:** Chrome, Firefox, Safari, Edge
+### Playwright Configuration
+- **Base URL:** http://localhost:3000
+- **Browsers:** Chrome, Firefox, Safari, Edge
 - **Viewport:** 1280x720
-- **Timeout:** 10 sekundid (actions), 30 sekundid (navigation)
-- **Paralleelsus:** Täielik
-- **Trace:** Esimese retry korral
+- **Timeout:** 10 seconds (actions), 30 seconds (navigation)
+- **Parallelism:** Full
+- **Trace:** On first retry
 
-## 📖 Dokumentatsioon
+## 📖 Documentation
 
-Detailne võrdlusanalüüs koos praktiliste näidete ja soovitustega: [docs/test-report.md](docs/test-report.md)
+Detailed comparison analysis with practical examples and recommendations: [docs/test-report.md](docs/test-report.md)
 
-## 🔗 Kasulikud lingid
+## 🔗 Useful Links
 
 ### Cypress
-- [Cypress dokumentatsioon](https://docs.cypress.io/)
-- [Best practices](https://docs.cypress.io/guides/references/best-practices)
-- [API reference](https://docs.cypress.io/api/table-of-contents)
+- [Cypress Documentation](https://docs.cypress.io/)
+- [Best Practices](https://docs.cypress.io/guides/references/best-practices)
+- [API Reference](https://docs.cypress.io/api/table-of-contents)
 
 ### Playwright
-- [Playwright dokumentatsioon](https://playwright.dev/)
-- [Test generator](https://playwright.dev/docs/codegen)
-- [Trace viewer](https://playwright.dev/docs/trace-viewer)
+- [Playwright Documentation](https://playwright.dev/)
+- [Test Generator](https://playwright.dev/docs/codegen)
+- [Trace Viewer](https://playwright.dev/docs/trace-viewer)
 
-## 🐛 Probleemide lahendamine
+## 🐛 Troubleshooting
 
-### Rakendus ei käivitu
+### Application Won't Start
 ```bash
-# Kontrolli, et oled õiges kaustas
-cd app
+# Check you're in the right directory
+pwd
 
-# Kontrolli Node.js versiooni (peaks olema v14+)
+# Check Node.js version (should be v14+)
 node --version
 
-# Kontrolli porti
+# Check port
 netstat -an | grep 3000
 ```
 
-### Cypress testid ebaõnnestuvad
+### Cypress Tests Fail
 ```bash
-# Puhasta cache
+# Clear cache
 npx cypress cache clear
 
-# Kontrolli brauserite olemasolu
+# Check browser availability
 npx cypress verify
 ```
 
-### Playwright testid ebaõnnestuvad
+### Playwright Tests Fail
 ```bash
-# Installi brauserid uuesti
+# Reinstall browsers
 npx playwright install
 
-# Kontrolli süsteemi sõltuvusi
+# Check system dependencies
 npx playwright install-deps
 ```
 
-### Võrgu ühenduse probleemid
+### Network Connection Issues
 ```bash
-# Kontrolli, et rakendus käib
+# Check application is running
 curl http://localhost:3000
 
-# Testi CORS seadistusi
+# Test CORS settings
 curl -H "Origin: http://localhost:3000" http://localhost:3000/api/users
 ```
 
-## 🤝 Arendamine
+## 🤝 Development
 
-### Uute testide lisamine
+### Adding New Tests
 
-1. **Cypress testid:** Lisa fail `tests/cypress/e2e/` kausta
-2. **Playwright testid:** Lisa fail `tests/playwright/tests/` kausta
-3. **Kasuta data-testid atribuute** elementide leidmiseks
-4. **Järgi olemasolevas projektis kasutatavat struktuuri**
+1. **Cypress tests:** Add file to `tests/cypress/e2e/` directory
+2. **Playwright tests:** Add file to `tests/playwright/tests/` directory
+3. **Use data-testid attributes** for element location
+4. **Follow existing project structure**
 
-### Code style
+### Code Style
 
 ```javascript
 // Cypress
-describe('Testi grupp', () => {
-  it('konkreetne test', () => {
+describe('Test Group', () => {
+  it('specific test', () => {
     cy.get('[data-testid="element"]').should('be.visible');
   });
 });
 
 // Playwright  
-test.describe('Testi grupp', () => {
-  test('konkreetne test', async ({ page }) => {
+test.describe('Test Group', () => {
+  test('specific test', async ({ page }) => {
     await expect(page.locator('[data-testid="element"]')).toBeVisible();
   });
 });
 ```
 
-## 📝 Licence
+## 📝 License
 
-See projekt on loodud õppe eesmärkidel TAK24 kursuse raames.
+This project was created for educational purposes as part of the TAK24 course.
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-**TAK24 üliõpilane**
-- 📧 E-mail: [student@example.ee](mailto:student@example.ee)
-- 📚 Kursus: TAK24
-- 📅 Aasta: 2025
+**TAK24 Student**
+- 📧 Email: [student@example.ee](mailto:student@example.ee)
+- 📚 Course: TAK24
+- 📅 Year: 2025
 
 ---
 
-## 🎯 Kokkuvõte
+## 🎯 Summary
 
-See projekt demonstreerib kahe populaarse UI testimise raamistiku praktilist kasutamist ja võrdlust. Mõlemad raamistikud suudavad edukalt testida veebirakenduse sisselogimise funktsionaalsust, kuid erinevad oma tugevuste ja nõrkuste poolest.
+This project demonstrates practical usage and comparison of two popular UI testing frameworks. Both frameworks can successfully test web application login functionality, but differ in their strengths and weaknesses.
 
-**Peamised õppetunnid:**
-1. **Cypress** - algajasõbralik, suurepärane debugging
-2. **Playwright** - kiirem, parem cross-browser tugi
-3. **Valik sõltub vajadusest** - projekt, meeskond, nõuded
+**Key Learnings:**
+1. **Cypress** - beginner-friendly, excellent debugging
+2. **Playwright** - faster, better cross-browser support
+3. **Choice depends on needs** - project, team, requirements
 
-Detailsem analüüs ja soovitused on saadaval [test-report.md](docs/test-report.md) failis.
+Detailed analysis and recommendations are available in [test-report.md](docs/test-report.md).
